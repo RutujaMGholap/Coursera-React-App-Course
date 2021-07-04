@@ -20,15 +20,15 @@ onDishSelect(dishId){
 }
   render(){
     return(
-      <div className="App">
+      <div >
         <Navbar dark color="primary">
           <div className="container">
             <NavbarBrand href="/">The Taj Hotel</NavbarBrand>
           </div>
         </Navbar>
 
-        <Menu dishes ={this.state.dishes} onClick = {(dishId)=>this.onDishSelect(dishId)}/>
-        <DishDetail dish= {this.state.dishes.filter((dish)=>dish.id === this.state.selectedDish)[0]} />
+        <Menu dishes ={this.state.dishes} onClick = {(dishId)=> this.onDishSelect(dishId)}/>
+        <DishDetail dish= {this.state.dishes.filter((dish)=> dish.id === this.state.selectedDish)[0]} />
         </div>
  
 
