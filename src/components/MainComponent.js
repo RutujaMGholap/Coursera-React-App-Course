@@ -3,6 +3,10 @@ import { Component } from 'react';
 import Menu from './MenuComponent';
 import DishDetail from './DishdetailComponent';
 import {DISHES} from '../shared/dishes';
+import {COMMENTS} from '../shared/comments';
+import {PROMOTIONS} from '../shared/promotions';
+import {LEADERS} from '../shared/leaders';
+import Contact from './ContactUsComponent';
 import Header from './HeaderComponent';
 import Footer from './FooterComponent';
 import Home from './HomeComponent';
@@ -13,6 +17,9 @@ constructor(props){
 super(props);
 this.state = {
   dishes: DISHES,
+  comments: COMMENTS,
+  promotion : PROMOTIONS,
+  leaders :LEADERS,
   selectedDish :null
 }
 }
@@ -20,7 +27,9 @@ this.state = {
   render(){
     const HomePage = ()=>{
       return(
-        <Home/>
+        <Home dish={this.state.dishes.filter((dish)=> dish.featured===true)[0]}
+          promotion={this.state.promotion.filter((promo)=> promo.featured===true)[0]}
+          leader={this.state.leaders.filter((leader)=> leader.featured===true)[0]}/>
       )
     }
     return(
@@ -29,6 +38,7 @@ this.state = {
         <Switch>
           <Route path="/home" component={HomePage}/>
           <Route exact path="/menu" component={()=><Menu dishes={this.state.dishes}/>}/>
+          <Route exact path="/contactus" component={Contact}/>
           <Redirect to="/home"/>
         </Switch>
         <Footer/>
